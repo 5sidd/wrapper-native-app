@@ -130,7 +130,7 @@ export default function App() {
     <SafeAreaView style={{ flex: 1 }}>
       <WebView
         injectedJavaScript={`${injectedJavaScript}`}
-        source={{ uri: "http://10.16.167.201:3000/" }}
+        source={{ uri: "https://wrapper-ui.onrender.com/" }}
         onMessage={(m) => onMessage(m)}
       />
     </SafeAreaView>
