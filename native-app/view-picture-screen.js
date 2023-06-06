@@ -8,16 +8,22 @@ const ViewPictureScreen = ({ changeScreen, capturedPicture, injectJavaScript }) 
         injectJavaScript(js);
         changeScreen("Web");
     }
+    
+    if (!capturedPicture) {
+        return (
+            <Text style={styles.text}> Loading preview... </Text>
+        );
+    }
 
     return (
         <View style={styles.cameraPreview}>
             <ImageBackground style={{ flex: 1 }} source={{ uri: capturedPicture && capturedPicture.uri }} />
             <View style={styles.cameraButtons}>
                 <TouchableOpacity style={styles.cameraButton} onPress={() => changeScreen("Camera")}>
-                    <Text style={{ textAlign: "center", color: "white" }}> Retake </Text>
+                    <Text style={styles.cameraButtonText}> Retake </Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cameraButton} onPress={choosePicture}>
-                    <Text style={{ textAlign: "center", color: "white" }}> Choose </Text>
+                    <Text style={styles.cameraButtonText}> Choose </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -25,6 +31,14 @@ const ViewPictureScreen = ({ changeScreen, capturedPicture, injectJavaScript }) 
 }
 
 const styles = StyleSheet.create({
+    text: {
+        marginTop: "60%",
+        textAlign: "center"
+    },
+    cameraButtonText: {
+        textAlign: "center",
+        color: "white"
+    },
     cameraPreview: {
         background: "transparent",
         flex: 1,

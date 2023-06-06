@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Button, TouchableOpacity, Alert } from "react-n
 import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 
-const CameraScreen = ({ changeScreen, setPicture }) => {
+const CameraScreen = ({ changeScreen, injectJavaScript, setPicture }) => {
     const [permission, requestPermission] = Camera.useCameraPermissions();
     const [cameraPosition, setCameraPosition] = useState(CameraType.back);
     const [isCameraReady, setIsCameraReady] = useState(false);
@@ -22,6 +22,8 @@ const CameraScreen = ({ changeScreen, setPicture }) => {
 
     async function capturePicture(cameraRef) {
         if (cameraRef && isCameraReady) {
+            setPicture(null);
+            injectJavaScript("");
             const options = { base64: true }
             const picture = await cameraRef.takePictureAsync(options);
             setPicture(picture);

@@ -30,7 +30,7 @@ export default function App() {
 
   if (currentScreen === "Camera") {
     return (
-      <CameraScreen changeScreen={changeScreen} setPicture={setPicture} />
+      <CameraScreen changeScreen={changeScreen} injectJavaScript={injectJavaScript} setPicture={setPicture} />
     );
   }
 
